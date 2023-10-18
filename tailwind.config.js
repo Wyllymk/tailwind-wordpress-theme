@@ -16,11 +16,20 @@ module.exports = {
     extend: {
       colors: tailpress.colorMapper(tailpress.theme("settings.color.palette", theme)),
       fontSize: tailpress.fontSizeMapper(tailpress.theme("settings.typography.fontSizes", theme)),
+      fontFamily: {
+        "lovely-home": ["Lovely Home", "serif"],
+      },
+      maxWidth: {
+        min: "250px",
+      },
     },
     screens: {
-      xs: "480px",
-      sm: "600px",
-      md: "782px",
+      xxs: "540px",
+      xs: "640px",
+      sm: "768px",
+      sm2: "820px",
+      sm3: "912px",
+      md: "992px",
       lg: tailpress.theme("settings.layout.contentSize", theme),
       xl: tailpress.theme("settings.layout.wideSize", theme),
       "2xl": "1440px",

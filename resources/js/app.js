@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //Icons
   const sunIcon = document.getElementById("sun");
   const moonIcon = document.getElementById("moon");
+  const iconDiv = document.getElementById("icon-div");
 
   //Theme vars
   const userTheme = localStorage.getItem("theme");
@@ -37,10 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Call theme on button click
-  moonIcon.addEventListener("click", () => {
-    switchTheme();
-  });
-  sunIcon.addEventListener("click", () => {
+  iconDiv.addEventListener("click", () => {
     switchTheme();
   });
 
@@ -50,9 +48,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Navigation toggle
 window.addEventListener("load", function () {
-  let main_navigation = document.querySelector("#primary-menu");
-  document.querySelector("#primary-menu-toggle").addEventListener("click", function (e) {
+  const main_navigation = document.querySelector("#primary-menu");
+  const open_menu_button = document.querySelector("#primary-menu-toggle");
+  const close_menu_button = document.querySelector("#primary-menu-close");
+
+  open_menu_button.addEventListener("click", function (e) {
     e.preventDefault();
-    main_navigation.classList.toggle("hidden");
+    main_navigation.classList.remove("hidden");
+    open_menu_button.classList.add("hidden");
+    close_menu_button.classList.remove("hidden");
   });
+
+  close_menu_button.addEventListener("click", (e) => {
+    e.preventDefault();
+    main_navigation.classList.add("hidden");
+    open_menu_button.classList.remove("hidden");
+    close_menu_button.classList.add("hidden");
+  });
+});
+
+// Effects on scroll -navigation
+window.addEventListener("scroll", function () {
+  const navigation = document.getElementById("header");
+  const scrollPosition = window.scrollY;
+
+  // Change the scroll threshold to a value that suits your design
+  const scrollThreshold = 100;
+
+  if (scrollPosition > scrollThreshold) {
+    // Add Tailwind CSS classes to change background color, border, and box shadow
+    navigation.classList.remove("border-transparent");
+    navigation.classList.add("border-b", "dark:border-slate-900", "dark:shadow-[3px_1px_10px_2px_rgba(59,7,100,0.5)]", "shadow-md");
+  } else {
+    // Restore the initial Tailwind CSS classes
+    navigation.classList.remove("border-b", "dark:border-slate-900", "dark:shadow-[3px_1px_10px_2px_rgba(59,7,100,0.5)]", "shadow-md");
+    navigation.classList.add("border-transparent");
+  }
 });

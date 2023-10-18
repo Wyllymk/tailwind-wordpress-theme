@@ -2,7 +2,7 @@
   "version": 1,
   "settings": {
     "layout": {
-      "contentSize": "960px",
+      "contentSize": "1024px",
       "wideSize": "1280px"
     },
     "color": {
@@ -26,6 +26,11 @@
           "name": "Light",
           "slug": "light",
           "color": "#F9FAFB"
+        },
+        {
+          "name": "regal-blue",
+          "slug": "regal-blue",
+          "color": "#0f172a"
         }
       ]
     },
